@@ -12,15 +12,19 @@
     "watch": "tsc --watch",
     "lint": "eslint src/**/*.ts --fix",
     "prepublish": "tsc",
-    "release": "standard-version"
+    "release": "standard-version",
+    "format": "prettier --write src/**/*.ts",
+    "commitlint": "commitlint --edit"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
     "@types/chai": "^4.3.5",
     "@types/mocha": "^10.0.1",
     "@types/node": "^20.4.3",
     "@typescript-eslint/eslint-plugin": "^6.4.1",
     "@typescript-eslint/parser": "^6.4.1",
+    "@yarnpkg/pnpify": "^4.0.0-rc.50",
     "chai": "^4.3.7",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.48.0",
