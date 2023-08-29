@@ -7,7 +7,7 @@ import {
     ParcelQLQuery,
     ParcelQLSimpleColumn,
     joins
-} from '../schema';
+} from '../schemas';
 import { BaseQueryBuilder } from './base-query-builder';
 import { FilterBuilder } from './filter-query-builder/filter-builder';
 import { QueryBuilder } from './query-builder';

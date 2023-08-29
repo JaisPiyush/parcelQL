@@ -3,7 +3,7 @@ import {
     ParcelQLCase,
     ParcelQLCaseWhen,
     ParcelQLSimpleColumn
-} from '../../schema';
+} from '../../schemas';
 import { BaseQueryBuilder } from '../base-query-builder';
 import { CaseQueryBuilder } from './case-query-builder';
 import { SimpleColumnQueryBuilder } from './simple-column-query-builder';

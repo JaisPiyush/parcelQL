@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import _knex, { Knex } from 'knex';
 import { ColumnQueryBuilder } from './column-query-builder';
-import { ParcelQLCaseWhen, ParcelQLSimpleColumnWithCase } from '../../schema';
+import { ParcelQLCaseWhen, ParcelQLSimpleColumnWithCase } from '../../schemas';
 
 describe('Tes ColumnQueryBuilder', () => {
     let knex: Knex;

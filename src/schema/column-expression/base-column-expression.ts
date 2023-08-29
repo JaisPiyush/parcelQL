@@ -1,14 +1,14 @@
 import {
     parcelQLSupportedTypeCast,
-    parcelQLArthmeticOperators,
+    parcelQLArithmeticOperators,
     parcelQLJSONBOperator,
     parcelQLCollectionComparisonOperators
-} from './constants';
+} from '../constants';
 import {
     parcelQLSubqueryExpressionOperator,
     parcelQLComparisonOperators,
     parcelQLJSONBComparisonOperators
-} from './filter-expression';
+} from '../filter-expression';
 
 export interface ParcelQLExpression {}
 
@@ -20,11 +20,11 @@ export type ParcelQLSimpleColumnExpression = string | string[];
 export interface ParcelQLSimpleColumnExpressionWithType
     extends ParcelQLExpression {
     column: ParcelQLSimpleColumnExpression;
-    type?: ParcelQLSupportedTypeCast;
+    type?: ParcelQLSupportedTypeCast | ParcelQLSupportedTypeCast[];
 }
 
 export type ParcelQLOperators =
-    | (typeof parcelQLArthmeticOperators)[number]
+    | (typeof parcelQLArithmeticOperators)[number]
     | (typeof parcelQLJSONBOperator)[number]
     | ParcelQLComparisonOperators
     | (typeof parcelQLSubqueryExpressionOperator)[number];
@@ -48,7 +48,7 @@ export type ParcelQLFilterExpression =
     | { or: ParcelQLFilterExpression[] }
     | { not: ParcelQLFilterExpression }
     | ParcelQLOperatorExpression<
-          ParcelQLColumnExpression,
+          ParcelQLExpression,
           ParcelQLComparisonOperators
       >;
 
@@ -69,4 +69,8 @@ export interface ParcelQLDistinctExpression extends ParcelQLExpression {
     )[];
 }
 
-export interface ParcelQLColumnExpression extends ParcelQLExpression {}
+export interface ParcelQLFunctionExpression<N, E = ParcelQLExpression>
+    extends ParcelQLExpression {
+    name: N;
+    parameters?: E | E[] | unknown;
+}

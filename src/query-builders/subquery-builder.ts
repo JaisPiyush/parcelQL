@@ -4,7 +4,7 @@ import {
     ParcelQLSimpleColumn,
     ParcelQLSubquery,
     subqueryOps
-} from '../schema';
+} from '../schemas';
 import { BaseQueryBuilder } from './base-query-builder';
 import { ParcelQLError, ParcelQLValidationError } from '../error';
 import { ColumnQueryBuilder } from './colum-query-builder/column-query-builder';

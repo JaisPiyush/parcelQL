@@ -10,7 +10,7 @@ import {
     windowFunctions,
     aggregationFunctions,
     columnFunctions
-} from '../../schema';
+} from '../../schemas';
 import { BaseQueryBuilder } from '../base-query-builder';
 import { SimpleColumnWithCaseQueryBuilder } from './simple-column-with-case-query-builder';
 import { WindowFunctionQueryBuilder } from '../function-query-builder/window-query-builder';

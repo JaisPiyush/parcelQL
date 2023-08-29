@@ -1,5 +1,5 @@
 import { Knex } from 'knex';
-import { CompFilter, ParcelQLFilter, ParcelQLSubquery } from '../../schema';
+import { CompFilter, ParcelQLFilter, ParcelQLSubquery } from '../../schemas';
 import { BaseQueryBuilder } from '../base-query-builder';
 import { CompFilterQueryBuilder } from './comp-filter-query-builder';
 import { SubQueryBuilder } from '../subquery-builder';

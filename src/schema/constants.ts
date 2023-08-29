@@ -1,4 +1,4 @@
-export const parcelQLArthmeticOperators = [
+export const parcelQLArithmeticOperators = [
     '+',
     '-',
     '*',

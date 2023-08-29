@@ -1,4 +1,4 @@
-import { ParcelQLQuery } from '../schema';
+import { ParcelQLQuery } from '../schemas';
 
 interface TestCase {
     query: ParcelQLQuery;

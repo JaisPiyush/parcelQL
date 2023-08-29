@@ -6,7 +6,7 @@ import {
     ParcelQLSimpleColumnWithCase,
     aggregationFunctions,
     dateTimeFunctions
-} from '../../schema';
+} from '../../schemas';
 import { BaseQueryBuilder } from '../base-query-builder';
 import { SimpleColumnWithCaseQueryBuilder } from '../colum-query-builder/simple-column-with-case-query-builder';
 

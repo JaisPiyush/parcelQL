@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import _knex, { Knex } from 'knex';
-import { ParcelQLCaseWhen } from '../../schema';
+import { ParcelQLCaseWhen } from '../../schemas';
 import { CaseWhenQueryBuilder } from './case-when-query-builder';
 
 describe('Test CaseWhenQueryBuilder', () => {

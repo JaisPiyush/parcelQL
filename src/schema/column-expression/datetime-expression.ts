@@ -1,8 +1,11 @@
-import { ParcelQLExpression } from './column-expression';
+import {
+    ParcelQLExpression,
+    ParcelQLFunctionExpression
+} from './base-column-expression';
 import {
     parcelQLDateTimeFunctions,
     parcelQLSpecialValuesTimeExpression
-} from './constants';
+} from '../constants';
 
 export type ParcelQLSpecialValuesTimeExpression =
     (typeof parcelQLSpecialValuesTimeExpression)[number];
@@ -12,7 +15,7 @@ type ParcelQLDateTimeFunctions =
     | 'extract'
     | 'date_trunc';
 
-export interface ParcelQLConstantTimeExpression extends ParcelQLExpression {
-    name: ParcelQLDateTimeFunctions;
-    expression?: ParcelQLSpecialValuesTimeExpression | string;
-}
+export type ParcelQLDateTimeExpression = ParcelQLFunctionExpression<
+    ParcelQLDateTimeFunctions,
+    ParcelQLExpression
+>;

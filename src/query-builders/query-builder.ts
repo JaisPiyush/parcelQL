@@ -10,7 +10,7 @@ import {
     ParcelQLQuery,
     ParcelQLSimpleColumn,
     queryActions
-} from '../schema';
+} from '../schemas';
 import { BaseQueryBuilder } from './base-query-builder';
 import { ColumnQueryBuilder } from './colum-query-builder/column-query-builder';
 import { FilterBuilder } from './filter-query-builder/filter-builder';

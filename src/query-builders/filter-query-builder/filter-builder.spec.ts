@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import _knex, { Knex } from 'knex';
 import { FilterBuilder } from './filter-builder';
-import { CompFilter, ParcelQLSubquery } from '../../schema';
+import { CompFilter, ParcelQLSubquery } from '../../schemas';
 
 describe('Test FilterBuilder', () => {
     let knex: Knex;

@@ -1,5 +1,5 @@
 import { Knex } from 'knex';
-import { ParcelQLSimpleColumn } from '../../schema';
+import { ParcelQLSimpleColumn } from '../../schemas';
 import { BaseQueryBuilder } from '../base-query-builder';
 import { ParcelQLError, ParcelQLValidationError } from '../../error';
 

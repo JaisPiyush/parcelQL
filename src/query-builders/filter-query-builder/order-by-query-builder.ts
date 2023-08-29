@@ -1,6 +1,6 @@
 import { Knex } from 'knex';
 import { ParcelQLValidationError } from '../../error';
-import { OrderByExpr, ParcelQLOrderBy, orderByOrders } from '../../schema';
+import { OrderByExpr, ParcelQLOrderBy, orderByOrders } from '../../schemas';
 import { BaseQueryBuilder } from '../base-query-builder';
 import { SimpleColumnQueryBuilder } from '../colum-query-builder/simple-column-query-builder';
 

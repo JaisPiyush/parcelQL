@@ -1,5 +1,5 @@
-import { ParcelQLExpression } from './column-expression';
-import { ParcelQLFilter } from './filter-expression';
+import { ParcelQLExpression } from './base-column-expression';
+import { ParcelQLFilter } from '../filter-expression';
 
 /**
  * Create Window function expression for the query
@@ -48,7 +48,7 @@ export type ParcelQLWindowDefinitionOrderByExpression =
 
 export interface ParcelQLWindow {
     name: ParcelQLWindowNames;
-    expression: ParcelQLWindowExpression | ParcelQLWindowExpression[];
+    parameters: ParcelQLWindowExpression | ParcelQLWindowExpression[] | unknown;
     filter?: ParcelQLFilter;
     window: ParcelQLWindowDefinition;
 }

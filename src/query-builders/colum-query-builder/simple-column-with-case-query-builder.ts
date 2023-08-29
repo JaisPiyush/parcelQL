@@ -1,6 +1,6 @@
 import { Knex } from 'knex';
 import { ParcelQLValidationError } from '../../error';
-import { ParcelQLCaseWhen, ParcelQLSimpleColumnWithCase } from '../../schema';
+import { ParcelQLCaseWhen, ParcelQLSimpleColumnWithCase } from '../../schemas';
 import { BaseQueryBuilder } from '../base-query-builder';
 import { SimpleColumnQueryBuilder } from './simple-column-query-builder';
 import { CaseWhenQueryBuilder } from './case-when-query-builder';

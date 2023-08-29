@@ -1,5 +1,5 @@
 import { Knex } from 'knex';
-import { CompFilter, ParcelQLCase, ParcelQLSimpleColumn } from '../../schema';
+import { CompFilter, ParcelQLCase, ParcelQLSimpleColumn } from '../../schemas';
 import { BaseQueryBuilder } from '../base-query-builder';
 import { CompFilterQueryBuilder } from '../filter-query-builder/comp-filter-query-builder';
 import { ParcelQLError, ParcelQLValidationError } from '../../error';

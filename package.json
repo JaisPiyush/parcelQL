@@ -7,11 +7,12 @@
   "author": "Piyush Jaiswal",
   "license": "MIT",
   "scripts": {
-    "test": "mocha --watch",
+    "test": "mocha",
+    "test:watch": "mocha --watch",
     "build": "rimraf dist && tsc",
     "watch": "tsc --watch",
     "lint": "eslint src/**/*.ts --fix",
-    "prepublish": "tsc",
+    "prepack": "tsc",
     "release": "standard-version",
     "format": "prettier --write src/**/*.ts",
     "commitlint": "commitlint --edit"
@@ -32,6 +33,7 @@
     "mocha": "^10.2.0",
     "prettier": "3.0.2",
     "rimraf": "^5.0.1",
+    "sqlite3": "^5.1.6",
     "standard-version": "^9.5.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6"

@@ -1,5 +1,6 @@
 {
   "extension": ["ts"],
   "spec": "src/**/*.spec.ts",
+  "ignore": "src/query-builders/**/*.spec.ts",
   "require": "ts-node/register"
 }

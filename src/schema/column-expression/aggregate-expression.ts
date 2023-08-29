@@ -7,9 +7,9 @@
  *  - aggregate_name ( [ expression [ , ... ] ] ) WITHIN GROUP ( order_by_clause ) [ FILTER ( WHERE filter_clause ) ]
  */
 
-import { ParcelQLGroupBySingle } from '../schema';
-import { ParcelQLExpression } from './column-expression';
-import { ParcelQLFilter } from './filter-expression';
+import { ParcelQLGroupBySingle } from '../../schemas';
+import { ParcelQLExpression } from './base-column-expression';
+import { ParcelQLFilter } from '../filter-expression';
 
 export interface ParcelQLAggregateExpression extends ParcelQLExpression {}
 
@@ -38,6 +38,9 @@ export type ParcelQLAggregateName =
 export interface ParcelQLAggregate {
     filter?: ParcelQLFilter;
     name: ParcelQLAggregateName;
-    expression: ParcelQLAggregateExpression | ParcelQLAggregateExpression[];
+    parameters:
+        | ParcelQLAggregateExpression
+        | ParcelQLAggregateExpression[]
+        | unknown;
     group?: ParcelQLGroupBySingle | ParcelQLGroupBySingle[];
 }

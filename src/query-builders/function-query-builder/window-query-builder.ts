@@ -8,7 +8,7 @@ import {
     ParcelQLWindowFunction,
     aggregationFunctions,
     windowFunctions
-} from '../../schema';
+} from '../../schemas';
 import { BaseQueryBuilder } from '../base-query-builder';
 import { OrderByQueryBuilder } from '../filter-query-builder/order-by-query-builder';
 import { SimpleColumnWithCaseQueryBuilder } from '../colum-query-builder/simple-column-with-case-query-builder';

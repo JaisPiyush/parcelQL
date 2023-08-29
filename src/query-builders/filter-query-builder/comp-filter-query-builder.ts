@@ -7,7 +7,7 @@ import {
     comparisonOperators,
     ParcelQLSimpleColumn,
     ComparisonFilterColumn
-} from '../../schema';
+} from '../../schemas';
 import { BaseQueryBuilder } from '../base-query-builder';
 import { SimpleColumnQueryBuilder } from '../colum-query-builder/simple-column-query-builder';
 import { ColumnQueryBuilder } from '../colum-query-builder/column-query-builder';

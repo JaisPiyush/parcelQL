@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import _knex, { Knex } from 'knex';
 import { AggregationQueryBuilder } from './aggregation-query-builder';
-import { ParcelQLSimpleColumnWithCase } from '../../schema';
+import { ParcelQLSimpleColumnWithCase } from '../../schemas';
 
 describe('Test AggregationQueryBuilder', () => {
     let knex: Knex;
