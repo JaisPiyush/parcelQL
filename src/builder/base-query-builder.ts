@@ -1,7 +1,15 @@
 import { Knex } from 'knex';
 import { ParcelQLExpression } from '../schema/column-expression/base-column-expression';
 
-export class BaseQueryBuilder<T = ParcelQLExpression, R = Knex.Raw> {
+
+export interface IBaseQueryBuilder<T, R = Knex.Raw> {
+    build(knex: Knex): R;
+    isProvisionedQuery(raiseException?: boolean): boolean;
+
+}
+
+export class BaseQueryBuilder<T extends ParcelQLExpression = ParcelQLExpression, R = Knex.Raw> 
+    implements IBaseQueryBuilder<T, R> {
     constructor(protected readonly query: T) {}
 
     /**

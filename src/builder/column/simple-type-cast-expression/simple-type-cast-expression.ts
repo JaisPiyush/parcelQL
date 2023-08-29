@@ -8,10 +8,15 @@ import { parcelQLSupportedTypeCast } from '../../../schema/constants';
 import { BaseQueryBuilder } from '../../base-query-builder';
 
 export class ParcelQLTypeCastExpression extends BaseQueryBuilder<
-    ParcelQLSimpleColumnExpressionWithType['type']
+    Required<ParcelQLSimpleColumnExpressionWithType>['type']
 > {
     protected _isProvisionedQuery(): void {
         if (this.query) {
+            if (! Array.isArray(this.query) && typeof this.query !== 'string') {
+                throw new ParcelQLValidationError(
+                    `column typecasting to "${this.query}" is not valid`
+                );
+            }
             const types: string[] = Array.isArray(this.query)
                 ? this.query
                 : [this.query];
@@ -34,7 +39,6 @@ export class ParcelQLTypeCastExpression extends BaseQueryBuilder<
     }
 
     protected _build(knex: Knex<any, any[]>): Knex.Raw<any> {
-        if (!this.query) return knex.raw('');
         const types = Array.isArray(this.query) ? this.query : [this.query];
         let query = '';
         for (const type of types) {

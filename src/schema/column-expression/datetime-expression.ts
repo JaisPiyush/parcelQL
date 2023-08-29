@@ -4,7 +4,8 @@ import {
 } from './base-column-expression';
 import {
     parcelQLDateTimeFunctions,
-    parcelQLSpecialValuesTimeExpression
+    parcelQLSpecialValuesTimeExpression,
+    parcelQLTimeExpressionDataTypes
 } from '../constants';
 
 export type ParcelQLSpecialValuesTimeExpression =
@@ -19,3 +20,8 @@ export type ParcelQLDateTimeExpression = ParcelQLFunctionExpression<
     ParcelQLDateTimeFunctions,
     ParcelQLExpression
 >;
+
+export type ParcelQLTimestampExpression = ParcelQLFunctionExpression<
+    typeof parcelQLTimeExpressionDataTypes[number],
+    ParcelQLSpecialValuesTimeExpression | string
+>

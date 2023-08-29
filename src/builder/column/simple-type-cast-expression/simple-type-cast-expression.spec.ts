@@ -25,10 +25,6 @@ describe('Testing ParcelQLColumnTypeCastExpression', () => {
             builder.isProvisionedQuery(true);
         }).to.throw(`column typecasting to "number" is not valid`);
     });
-    it('should pass on undefined data', () => {
-        const builder = new ParcelQLTypeCastExpression(undefined);
-        expect(builder.build(knex).toQuery()).eq('');
-    });
     it('should build single type cast', () => {
         const builder = new ParcelQLTypeCastExpression('decimal');
         expect(builder.build(knex).toQuery()).eq('::decimal');
