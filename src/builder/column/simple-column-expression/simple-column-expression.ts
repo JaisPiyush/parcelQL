@@ -1,16 +1,9 @@
 import { ParcelQLValidationError } from '../../../error';
-import {
-    ParcelQLSimpleColumnExpressionWithType
-} from '../../../schema/column-expression/base-column-expression';
+import { ParcelQLSimpleColumnExpressionWithType } from '../../../schema/column-expression/base-column-expression';
 import { BaseQueryBuilder } from '../../base-query-builder';
 
-
-
-export class ParcelQLSimpleColumnExpressionBuilder 
-    extends BaseQueryBuilder<ParcelQLSimpleColumnExpressionWithType> {
-    
-    
-    protected _isProvisionedQuery(){
+export class ParcelQLSimpleColumnExpressionBuilder extends BaseQueryBuilder<ParcelQLSimpleColumnExpressionWithType> {
+    protected _isProvisionedQuery() {
         if (
             this.query.column === undefined ||
             this.query.column === null ||
@@ -31,8 +24,5 @@ export class ParcelQLSimpleColumnExpressionBuilder
         throw new ParcelQLValidationError(
             `column typecasting to "${this.query.type}" is not valid`
         );
-
     }
-
-
 }

@@ -23,12 +23,12 @@ describe('Testing ParcelQLColumnTypeCastExpression', () => {
         const builder = new ParcelQLTypeCastExpression('number' as any);
         expect(() => {
             builder.isProvisionedQuery(true);
-        }).to.throw(`column typecasting to "number" is not valid`)
+        }).to.throw(`column typecasting to "number" is not valid`);
     });
-    it ('should pass on undefined data', () => {
+    it('should pass on undefined data', () => {
         const builder = new ParcelQLTypeCastExpression(undefined);
         expect(builder.build(knex).toQuery()).eq('');
-    })
+    });
     it('should build single type cast', () => {
         const builder = new ParcelQLTypeCastExpression('decimal');
         expect(builder.build(knex).toQuery()).eq('::decimal');
@@ -37,6 +37,4 @@ describe('Testing ParcelQLColumnTypeCastExpression', () => {
         const builder = new ParcelQLTypeCastExpression(['decimal', 'bigint']);
         expect(builder.build(knex).toQuery()).eq('::decimal::bigint');
     });
-
-
 });

@@ -1,1 +1,1 @@
-export * from './simple-type-cast-expression'
+export * from './simple-type-cast-expression';

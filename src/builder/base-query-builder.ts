@@ -39,7 +39,6 @@ export class BaseQueryBuilder<T = ParcelQLExpression, R = Knex.Raw> {
             this._isProvisionedQuery();
             return true;
         } catch (error) {
-            
             if (raiseException) throw error;
             return false;
         }
