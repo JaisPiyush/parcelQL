@@ -7,7 +7,8 @@ export const parcelQLArithmeticOperators = [
     '^'
 ] as const;
 
-export const parcelQLJSONBOperator = ['||', '#-', '-', '#>', '#>>'] as const;
+// Blocked support for '||', '#-', '-',  operators
+export const parcelQLJSONBOperator = ['#>', '#>>'] as const;
 
 export const parcelQLJSONBFunctions = [
     'jsonb_array_length',
