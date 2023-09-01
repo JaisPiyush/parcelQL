@@ -7,7 +7,7 @@ import {Knex} from "knex";
 export class ParcelQLTimestampExpressionBuilder extends
     BaseQueryBuilder<ParcelQLTimestampExpression> {
 
-        protected _isProvisionedQuery(): void {
+        protected _validateQuery(): void {
             if (!parcelQLTimeExpressionDataTypes.includes(this.query.name)) {
                 throw new ParcelQLValidationError(
                     `timestamp function name "${this.query.name}" is not valid`

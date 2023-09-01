@@ -168,3 +168,14 @@ export const parcelQLSubqueryExpressionOperator = [
     'in',
     'not in'
 ] as const;
+
+let parcelQLOperators: string[] = [];
+parcelQLOperators = parcelQLOperators.concat([
+            ...parcelQLArithmeticOperators, 
+            ...parcelQLJSONBOperator,
+            ...parcelQLComparisonOperators,
+            ...parcelQLCollectionComparisonOperators,
+            ...parcelQLJSONBComparisonOperators,
+            ...parcelQLSubqueryExpressionOperator
+        ]);
+export {parcelQLOperators};

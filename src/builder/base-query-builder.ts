@@ -4,13 +4,15 @@ import { ParcelQLExpression } from '../schema/column-expression/base-column-expr
 
 export interface IBaseQueryBuilder<T, R = Knex.Raw> {
     build(knex: Knex): R;
-    isProvisionedQuery(raiseException?: boolean): boolean;
-
+    validateQuery(raiseException?: boolean): boolean;
+    isQuerySchemaSupported(): boolean
 }
 
 export class BaseQueryBuilder<T extends ParcelQLExpression = ParcelQLExpression, R = Knex.Raw> 
     implements IBaseQueryBuilder<T, R> {
     constructor(protected readonly query: T) {}
+
+
 
     /**
      * Hook called just before building the query
@@ -20,6 +22,13 @@ export class BaseQueryBuilder<T extends ParcelQLExpression = ParcelQLExpression,
     protected beforeBuild(knex: Knex): void {}
 
     /**
+     * Hook called just before `validateQuery` the query
+     * Primarily used for preparing the states before validation
+     * @param knex - Knex
+     */
+    protected beforeValidatingQuery(knex: Knex): void {}
+
+    /**
      * Main query building goes here.
      * @param knex - Knex
      */
@@ -27,8 +36,15 @@ export class BaseQueryBuilder<T extends ParcelQLExpression = ParcelQLExpression,
         throw new Error('Not implemented');
     }
 
+    // Method used to check that schema can be parsed by this builder
+    // Used in composite design pattern
+    public isQuerySchemaSupported(): boolean {
+        return false;
+    }
+
     public build(knex: Knex): R {
-        this._isProvisionedQuery();
+        this.beforeValidatingQuery(knex);
+        this._validateQuery();
         this.beforeBuild(knex);
         return this._build(knex);
     }
@@ -42,9 +58,9 @@ export class BaseQueryBuilder<T extends ParcelQLExpression = ParcelQLExpression,
      * This function will also be used to validate the query before calling the `beforeBuild` and `_build` functions
      * @param query - Query to be checked
      */
-    public isProvisionedQuery(raiseException = false): boolean {
+    public validateQuery(raiseException = false): boolean {
         try {
-            this._isProvisionedQuery();
+            this._validateQuery();
             return true;
         } catch (error) {
             if (raiseException) throw error;
@@ -52,5 +68,5 @@ export class BaseQueryBuilder<T extends ParcelQLExpression = ParcelQLExpression,
         }
     }
 
-    protected _isProvisionedQuery() {}
+    protected _validateQuery() {}
 }

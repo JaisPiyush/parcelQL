@@ -15,7 +15,7 @@ import { Knex } from "knex";
 export class ParcelQLValueExpressionBuilder extends 
     BaseQueryBuilder<any> {
 
-        protected _isProvisionedQuery(): void {
+        protected _validateQuery(): void {
             if (typeof this.query === 'object') {
                 throw new Error('Value expression cannot be an object');
             }

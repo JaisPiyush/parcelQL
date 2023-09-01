@@ -10,7 +10,7 @@ import { BaseQueryBuilder } from '../../base-query-builder';
 export class ParcelQLTypeCastExpression extends BaseQueryBuilder<
     Required<ParcelQLSimpleColumnExpressionWithType>['type']
 > {
-    protected _isProvisionedQuery(): void {
+    protected _validateQuery(): void {
         if (this.query) {
             if (! Array.isArray(this.query) && typeof this.query !== 'string') {
                 throw new ParcelQLValidationError(

@@ -22,7 +22,7 @@ describe('Testing ParcelQLColumnTypeCastExpression', () => {
     it('should throw error on wrong data type', () => {
         const builder = new ParcelQLTypeCastExpression('number' as any);
         expect(() => {
-            builder.isProvisionedQuery(true);
+            builder.validateQuery(true);
         }).to.throw(`column typecasting to "number" is not valid`);
     });
     it('should build single type cast', () => {

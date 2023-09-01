@@ -30,12 +30,12 @@ export type ParcelQLOperators =
     | (typeof parcelQLSubqueryExpressionOperator)[number];
 
 //TODO: Add triviality to support either rightExpr or value
-export interface ParcelQLOperatorExpression<T extends ParcelQLExpression, O>
+export interface ParcelQLOperatorExpression<O, L = any, R = any >
     extends ParcelQLExpression {
-    leftExpr: T | ParcelQLOperatorExpression<T | any, O>;
+    leftExpr: L | ParcelQLOperatorExpression<L | any, O> | unknown;
     operator: O;
-    rightExpr?: T | ParcelQLOperatorExpression<T | any, O>;
-    value?: unknown;
+    rightExpr: R | ParcelQLOperatorExpression<R | any, O> | unknown;
+    // value?: unknown;
 }
 
 export type ParcelQLComparisonOperators =

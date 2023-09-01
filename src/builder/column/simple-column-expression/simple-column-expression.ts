@@ -8,7 +8,7 @@ export class ParcelQLSimpleColumnExpressionBuilder
     extends BaseQueryBuilder<ParcelQLSimpleColumnExpressionWithType> {
     
     
-    protected _isProvisionedQuery() {
+    protected _validateQuery() {
         if (
             this.query.column === undefined ||
             this.query.column === null ||
