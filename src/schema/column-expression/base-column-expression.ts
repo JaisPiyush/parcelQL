@@ -58,7 +58,7 @@ export interface ParcelQLCaseExpression extends ParcelQLExpression {
 
 export interface ParcelQLCaseWhenExpression extends ParcelQLExpression {
     cases: ParcelQLCaseExpression[];
-    else: Omit<ParcelQLColumnExpression, 'alias'>;
+    else?: Omit<ParcelQLColumnExpression, 'alias'>;
 }
 
 export interface ParcelQLDistinctExpression extends ParcelQLExpression {

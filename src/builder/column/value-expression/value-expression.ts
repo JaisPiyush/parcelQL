@@ -1,3 +1,4 @@
+import { ParcelQLValidationError } from '../../../error';
 import { BaseQueryBuilder } from '../../base-query-builder';
 import { Knex } from 'knex';
 
@@ -14,8 +15,12 @@ import { Knex } from 'knex';
  */
 export class ParcelQLValueExpressionBuilder extends BaseQueryBuilder<any> {
     protected _validateQuery(): void {
-        if (typeof this.query === 'object') {
+        if (this.query !== null && typeof this.query === 'object') {
             throw new Error('Value expression cannot be an object');
+        }
+
+        if (this.query === undefined) {
+            throw new ParcelQLValidationError('Value expression cannot be undefined');
         }
     }
 

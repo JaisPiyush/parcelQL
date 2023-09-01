@@ -28,7 +28,16 @@ describe('Testing ParcelQLValueExpressionBuilder', () => {
 
     it('should return raw value if query is not an object', () => {
         const builder = new ParcelQLValueExpressionBuilder(1);
-        expect(builder.build(knex).toString()).to.equal('1');
+        const sql = builder.build(knex).toSQL();
+        expect(sql.sql).to.equal('?');
+        expect(sql.bindings).to.eql([1]);
+    });
+
+    it('should return raw value if query is `null`', () => {
+        const builder = new ParcelQLValueExpressionBuilder(null);
+        const sql = builder.build(knex).toSQL();
+        expect(sql.sql).to.equal('?');
+        expect(sql.bindings).to.eql([null]);
     });
 
     it('should return column value if query is prefixed with col:', () => {

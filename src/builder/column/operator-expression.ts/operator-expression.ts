@@ -15,7 +15,9 @@ export class ParcelQLOperatorBuilder extends BaseColumnBuilder<
     private rightExpr?: IBaseQueryBuilder<any, any>;
 
     public isQuerySchemaSupported(): boolean {
-        if (this.query.leftExpr && this.query.rightExpr && this.query.operator)
+        if (this.query.leftExpr !== undefined && 
+            this.query.rightExpr !== undefined && 
+            this.query.operator)
             return true;
         return false;
     }
