@@ -30,7 +30,6 @@ export const parcelQLDateTimeFunctions = [
     'localtimestamp',
     'age',
     'clock_timestamp',
-    'date_part',
     'date_trunc',
     'extract',
     'isfinite',
@@ -41,6 +40,14 @@ export const parcelQLDateTimeFunctions = [
     'statement_timestamp',
     'timeofday'
 ] as const;
+
+export const parcelQLDateTimeFunctionsWithoutParenthesis = [
+    'current_date',
+    'current_time',
+    'current_timestamp',
+    'localtime',
+    'localtimestamp'
+];
 
 export const parcelQLTimeInterval = [
     'year',
@@ -179,3 +186,6 @@ parcelQLOperators = parcelQLOperators.concat([
     ...parcelQLSubqueryExpressionOperator
 ]);
 export { parcelQLOperators };
+
+export type ParcelQLFunctions = typeof parcelQLJSONBFunctions[number]
+    | typeof parcelQLDateTimeFunctions[number];

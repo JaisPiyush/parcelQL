@@ -9,11 +9,13 @@ import { ParcelQLValidationError } from '../../error';
 import { ParcelQLOperatorBuilder } from './operator-expression.ts/operator-expression';
 import { ParcelQLDistinctExpressionBuilder } from './distinct-expression/distinct-expression';
 import { ParcelQLCaseWhenBuilder } from './case-expression/case-expression';
+import { ParcelQLFunctionBuilder } from './function-expression/function-expression';
 
 export class ParcelQLColumnBuilder extends BaseColumnBuilder<ParcelQLColumnExpression> {
     // Order of the builders is important
     // The first builder will have the highest priority
     private childBuilders = [
+        ParcelQLFunctionBuilder,
         ParcelQLOperatorBuilder,
         ParcelQLCaseWhenBuilder,
         ParcelQLDistinctExpressionBuilder,
