@@ -7,6 +7,12 @@ import { BaseQueryBuilder } from '../../base-query-builder';
 export class ParcelQLSimpleColumnExpressionBuilder 
     extends BaseQueryBuilder<ParcelQLSimpleColumnExpressionWithType> {
     
+    public isQuerySchemaSupported(): boolean {
+        return (this.query.column !== undefined && 
+                this.query.column !== null) || 
+                (Array.isArray(this.query.column as string[]) && 
+                (this.query.column as string[]).length > 0);
+    }
     
     protected _validateQuery() {
         if (

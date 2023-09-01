@@ -39,7 +39,7 @@ export class BaseQueryBuilder<T extends ParcelQLExpression = ParcelQLExpression,
     // Method used to check that schema can be parsed by this builder
     // Used in composite design pattern
     public isQuerySchemaSupported(): boolean {
-        return false;
+        return this.validateQuery();
     }
 
     public build(knex: Knex): R {

@@ -28,10 +28,10 @@ export class ParcelQLColumnBuilder
             ParcelQLValueExpressionBuilder.name
         ]
 
-        protected beforeProvisionedQuery(knex: Knex<any, any[]>): void {
+        protected beforeValidatingQuery(knex: Knex<any, any[]>): void {
             for (const builder of this.childBuilders) {
                 const instance = new builder(this.query);
-                console.debug(`Checking ${instance.constructor.name}: ${instance.isQuerySchemaSupported()}`);
+                // console.log(`${instance.constructor.name} is supported: ${instance.isQuerySchemaSupported()}`);
                 if (instance.isQuerySchemaSupported()) {
                     this.selectedBuilder = instance;
                     return;
@@ -39,7 +39,7 @@ export class ParcelQLColumnBuilder
             }
         }
 
-        protected _isProvisionedQuery(): void {
+        protected _validateQuery(): void {
             if (!this.selectedBuilder) {
                 throw new ParcelQLValidationError('Invalid column expression');
             }

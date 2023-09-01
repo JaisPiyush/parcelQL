@@ -11,10 +11,17 @@ export class ParcelQLOperatorBuilder
         private leftExpr?: IBaseQueryBuilder<any, any>;
         private rightExpr?: IBaseQueryBuilder<any, any>;
 
+        public isQuerySchemaSupported(): boolean {
+            if (
+                this.query.leftExpr  &&
+                this.query.rightExpr &&
+                this.query.operator
+            ) return true;
+            return false;
+        }
+
         protected _validateQuery(): void {
-            if (this.query.leftExpr && this.query.operator &&
-                    this.query.rightExpr
-            ) {
+            if (this.isQuerySchemaSupported()) {
                 if (!parcelQLOperators.includes(this.query.operator)) {
                     throw new ParcelQLValidationError(
                         `Operator "${this.query.operator}" is not supported`
@@ -30,11 +37,7 @@ export class ParcelQLOperatorBuilder
         protected beforeBuild(knex: Knex<any, any[]>): void {
             if (!this.parent) throw new ParcelQLError(`Parent builder is not set`);
             this.leftExpr = new this.parent(this.query.leftExpr);
-            // Validate the left expression query
-            this.leftExpr.validateQuery(true);
             this.rightExpr = new this.parent(this.query.rightExpr);
-            // Validate the right expression query
-            this.rightExpr.validateQuery(true);
         }
 
         protected _build(knex: Knex<any, any[]>): Knex.Raw<any> {
