@@ -4,16 +4,15 @@ import { ParcelQLSimpleColumnExpressionWithType } from '../../../schema/column-e
 import { ParcelQLTypeCastExpression } from '../simple-type-cast-expression';
 import { BaseQueryBuilder } from '../../base-query-builder';
 
-export class ParcelQLSimpleColumnExpressionBuilder 
-    extends BaseQueryBuilder<ParcelQLSimpleColumnExpressionWithType> {
-    
+export class ParcelQLSimpleColumnExpressionBuilder extends BaseQueryBuilder<ParcelQLSimpleColumnExpressionWithType> {
     public isQuerySchemaSupported(): boolean {
-        return (this.query.column !== undefined && 
-                this.query.column !== null) || 
-                (Array.isArray(this.query.column as string[]) && 
-                (this.query.column as string[]).length > 0);
+        return (
+            (this.query.column !== undefined && this.query.column !== null) ||
+            (Array.isArray(this.query.column as string[]) &&
+                (this.query.column as string[]).length > 0)
+        );
     }
-    
+
     protected _validateQuery() {
         if (
             this.query.column === undefined ||
@@ -60,8 +59,10 @@ export class ParcelQLSimpleColumnExpressionBuilder
             typeof this.query.column === 'string'
                 ? this._buildSingleColumn(this.query.column)
                 : this._buildJSONExtractColumn(this.query.column);
-        if (this.query.type) { 
-            const typeBuilder = new ParcelQLTypeCastExpression(this.query.type as any);
+        if (this.query.type) {
+            const typeBuilder = new ParcelQLTypeCastExpression(
+                this.query.type as any
+            );
             const typeString = typeBuilder.build(knex).toQuery();
             query += typeString;
         }

@@ -21,7 +21,9 @@ describe('Testing ParcelQLValueExpressionBuilder', () => {
 
     it('should throw error if query is an object', () => {
         const builder = new ParcelQLValueExpressionBuilder({});
-        expect(() => builder.build(knex)).to.throw('Value expression cannot be an object');
+        expect(() => builder.build(knex)).to.throw(
+            'Value expression cannot be an object'
+        );
     });
 
     it('should return raw value if query is not an object', () => {

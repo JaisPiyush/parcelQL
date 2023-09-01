@@ -22,6 +22,6 @@ export type ParcelQLDateTimeExpression = ParcelQLFunctionExpression<
 >;
 
 export type ParcelQLTimestampExpression = ParcelQLFunctionExpression<
-    typeof parcelQLTimeExpressionDataTypes[number],
+    (typeof parcelQLTimeExpressionDataTypes)[number],
     ParcelQLSpecialValuesTimeExpression | string
->
+>;

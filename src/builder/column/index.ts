@@ -1,1 +1,1 @@
-export {ParcelQLColumnBuilder} from './column-builder';
+export { ParcelQLColumnBuilder } from './column-builder';

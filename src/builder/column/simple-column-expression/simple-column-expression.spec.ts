@@ -23,19 +23,27 @@ describe('Testing ParcelQLSimpleColumnExpressionBuilder', () => {
     it('should through error due to invalid column value', () => {
         // Undefined column
         expect(() => {
-            const builder = new ParcelQLSimpleColumnExpressionBuilder({} as any);
+            const builder = new ParcelQLSimpleColumnExpressionBuilder(
+                {} as any
+            );
             builder.build(knex);
         }).to.throw(`column value "undefined" is not valid`);
         expect(() => {
-            const builder = new ParcelQLSimpleColumnExpressionBuilder({ column: null } as any);
+            const builder = new ParcelQLSimpleColumnExpressionBuilder({
+                column: null
+            } as any);
             builder.build(knex);
         }).to.throw(`column value "null" is not valid`);
         expect(() => {
-            const builder = new ParcelQLSimpleColumnExpressionBuilder({ column: '' });
+            const builder = new ParcelQLSimpleColumnExpressionBuilder({
+                column: ''
+            });
             builder.build(knex);
         }).to.throw(`column value "" is not valid`);
         expect(() => {
-            const builder = new ParcelQLSimpleColumnExpressionBuilder({ column: [] });
+            const builder = new ParcelQLSimpleColumnExpressionBuilder({
+                column: []
+            });
             builder.build(knex);
         }).to.throw(`column value "" is not valid`);
     });

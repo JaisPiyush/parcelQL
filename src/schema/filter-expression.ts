@@ -32,6 +32,5 @@ export const parcelQLSubqueryExpressionOperator = [
 ] as const;
 
 //TODO: add support for subquery expression
-//TODO: add support for distinct
 
 export interface ParcelQLFilter {}

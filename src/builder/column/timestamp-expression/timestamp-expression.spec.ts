@@ -50,5 +50,4 @@ describe('Testing ParcelQLTimestampExpressionBuilder', () => {
         expect(sql.sql).to.equal('time ? with time zone');
         expect(sql.bindings).to.deep.equal(['now']);
     });
-    
 });

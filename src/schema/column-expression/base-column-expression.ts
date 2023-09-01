@@ -30,7 +30,7 @@ export type ParcelQLOperators =
     | ParcelQLComparisonOperators
     | (typeof parcelQLSubqueryExpressionOperator)[number];
 
-export interface ParcelQLOperatorExpression<O, L = any, R = any >
+export interface ParcelQLOperatorExpression<O, L = any, R = any>
     extends ParcelQLExpression {
     leftExpr: L | ParcelQLOperatorExpression<L | any, O> | unknown;
     operator: O;
@@ -53,16 +53,16 @@ export type ParcelQLFilterExpression =
 
 export interface ParcelQLCaseExpression extends ParcelQLExpression {
     when: ParcelQLFilterExpression;
-    then: unknown | ParcelQLSimpleColumnExpressionWithType;
+    then: Omit<ParcelQLColumnExpression, 'alias'>;
 }
 
 export interface ParcelQLCaseWhenExpression extends ParcelQLExpression {
     cases: ParcelQLCaseExpression[];
-    else: unknown | ParcelQLSimpleColumnExpressionWithType;
+    else: Omit<ParcelQLColumnExpression, 'alias'>;
 }
 
 export interface ParcelQLDistinctExpression extends ParcelQLExpression {
-    distinct: ParcelQLColumnExpression[];
+    distinct: Omit<ParcelQLColumnExpression, 'alias'>[];
 }
 
 export interface ParcelQLFunctionExpression<N, E = ParcelQLExpression>

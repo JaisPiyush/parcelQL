@@ -12,7 +12,7 @@ export class ParcelQLTypeCastExpression extends BaseQueryBuilder<
 > {
     protected _validateQuery(): void {
         if (this.query) {
-            if (! Array.isArray(this.query) && typeof this.query !== 'string') {
+            if (!Array.isArray(this.query) && typeof this.query !== 'string') {
                 throw new ParcelQLValidationError(
                     `column typecasting to "${this.query}" is not valid`
                 );

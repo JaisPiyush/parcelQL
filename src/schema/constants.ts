@@ -171,11 +171,11 @@ export const parcelQLSubqueryExpressionOperator = [
 
 let parcelQLOperators: string[] = [];
 parcelQLOperators = parcelQLOperators.concat([
-            ...parcelQLArithmeticOperators, 
-            ...parcelQLJSONBOperator,
-            ...parcelQLComparisonOperators,
-            ...parcelQLCollectionComparisonOperators,
-            ...parcelQLJSONBComparisonOperators,
-            ...parcelQLSubqueryExpressionOperator
-        ]);
-export {parcelQLOperators};
+    ...parcelQLArithmeticOperators,
+    ...parcelQLJSONBOperator,
+    ...parcelQLComparisonOperators,
+    ...parcelQLCollectionComparisonOperators,
+    ...parcelQLJSONBComparisonOperators,
+    ...parcelQLSubqueryExpressionOperator
+]);
+export { parcelQLOperators };

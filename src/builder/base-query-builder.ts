@@ -1,18 +1,18 @@
 import { Knex } from 'knex';
 import { ParcelQLExpression } from '../schema/column-expression/base-column-expression';
 
-
 export interface IBaseQueryBuilder<T, R = Knex.Raw> {
     build(knex: Knex): R;
     validateQuery(raiseException?: boolean): boolean;
-    isQuerySchemaSupported(): boolean
+    isQuerySchemaSupported(): boolean;
 }
 
-export class BaseQueryBuilder<T extends ParcelQLExpression = ParcelQLExpression, R = Knex.Raw> 
-    implements IBaseQueryBuilder<T, R> {
+export class BaseQueryBuilder<
+    T extends ParcelQLExpression = ParcelQLExpression,
+    R = Knex.Raw
+> implements IBaseQueryBuilder<T, R>
+{
     constructor(protected readonly query: T) {}
-
-
 
     /**
      * Hook called just before building the query

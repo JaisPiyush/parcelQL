@@ -58,7 +58,7 @@ describe('Testing ParcelQLOperatorBuilder', () => {
     it('should create query for column and value operation', () => {
         const builder = new ParcelQLColumnBuilder({
             leftExpr: {
-                column: 'name',
+                column: 'name'
             },
             operator: '>',
             rightExpr: 2
@@ -72,7 +72,7 @@ describe('Testing ParcelQLOperatorBuilder', () => {
     it('should create query for value and column operation', () => {
         const builder = new ParcelQLColumnBuilder({
             rightExpr: {
-                column: 'name',
+                column: 'name'
             },
             operator: '>',
             leftExpr: 2
@@ -86,7 +86,7 @@ describe('Testing ParcelQLOperatorBuilder', () => {
     it('should create query for column and column operation', () => {
         const builder = new ParcelQLColumnBuilder({
             leftExpr: {
-                column: 'name',
+                column: 'name'
             },
             operator: '>',
             rightExpr: {

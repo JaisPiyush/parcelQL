@@ -2,7 +2,6 @@ import { expect } from 'chai';
 import _knex, { Knex } from 'knex';
 import { ParcelQLColumnBuilder } from '../column-builder';
 
-
 describe('Testing ParcelQLDistinctExpressionBuilder', () => {
     let knex: Knex;
 
@@ -20,16 +19,12 @@ describe('Testing ParcelQLDistinctExpressionBuilder', () => {
         await knex.destroy();
     });
 
-    it('should create distinct function', () => { 
+    it('should create distinct function', () => {
         const builder = new ParcelQLColumnBuilder({
-            distinct: [
-                'name',
-                {column: 'age', alias: 'age'}
-            ]
+            distinct: ['name', { column: 'age' }]
         });
 
         const sql = builder.build(knex).toSQL();
-        console.log(sql)
-        expect(sql.sql).to.equal('distinct(`name`, `age` as `age`)');
-     });
+        expect(sql.sql).to.equal('distinct(`name`, `age`)');
+    });
 });
