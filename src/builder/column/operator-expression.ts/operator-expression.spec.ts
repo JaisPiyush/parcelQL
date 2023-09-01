@@ -23,7 +23,7 @@ describe('Testing ParcelQLOperatorBuilder', () => {
     it('should throw error on wrong operator expression', () => {
         const builder = new ParcelQLColumnBuilder({
             leftExpr: 'name',
-            operator: 'not as',
+            operator: 'not as' as any,
             rightExpr: 'named'
         });
 

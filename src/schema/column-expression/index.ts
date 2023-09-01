@@ -9,11 +9,11 @@ import {
 import { ParcelQLDateTimeExpression } from './datetime-expression';
 import { ParcelQLWindowExpression } from './window-expression';
 
-export type ParcelQLColumnExpression =
-    | ParcelQLSimpleColumnExpressionWithType
+export type ParcelQLColumnExpression = {alias?: string} &
+    (ParcelQLSimpleColumnExpressionWithType
     | ParcelQLCaseWhenExpression
     | ParcelQLDistinctExpression
     | ParcelQLDateTimeExpression
     | ParcelQLAggregateExpression
     | ParcelQLWindowExpression
-    | ParcelQLOperatorExpression<ParcelQLOperators>;
+    | ParcelQLOperatorExpression<ParcelQLOperators>);

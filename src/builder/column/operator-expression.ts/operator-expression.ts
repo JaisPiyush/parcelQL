@@ -36,13 +36,13 @@ export class ParcelQLOperatorBuilder
 
         protected beforeBuild(knex: Knex<any, any[]>): void {
             if (!this.parent) throw new ParcelQLError(`Parent builder is not set`);
-            this.leftExpr = new this.parent(this.query.leftExpr);
-            this.rightExpr = new this.parent(this.query.rightExpr);
+            this.leftExpr = new this.parent(this.query.leftExpr, this.parent);
+            this.rightExpr = new this.parent(this.query.rightExpr, this.parent);
         }
 
         protected _build(knex: Knex<any, any[]>): Knex.Raw<any> {
             return knex.raw(
-                `? ${this.query.operator} ?`,
+                `?? ${this.query.operator} ??`,
                 [this.leftExpr?.build(knex), this.rightExpr?.build(knex)]
             );
         }

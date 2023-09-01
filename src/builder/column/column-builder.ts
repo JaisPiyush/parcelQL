@@ -7,6 +7,7 @@ import { ParcelQLSimpleColumnExpressionBuilder } from "./simple-column-expressio
 import { ParcelQLValueExpressionBuilder } from "./value-expression";
 import { ParcelQLValidationError } from "../../error";
 import { ParcelQLOperatorBuilder } from "./operator-expression.ts/operator-expression";
+import { ParcelQLDistinctExpressionBuilder } from "./distinct-expression/distinct-expression";
 
 export class ParcelQLColumnBuilder 
     extends BaseColumnBuilder<ParcelQLColumnExpression> {
@@ -15,6 +16,7 @@ export class ParcelQLColumnBuilder
         // The first builder will have the highest priority
         private childBuilders = [
             ParcelQLOperatorBuilder,
+            ParcelQLDistinctExpressionBuilder,
             ParcelQLTimestampExpressionBuilder,
             ParcelQLSimpleColumnExpressionBuilder,
             ParcelQLValueExpressionBuilder
@@ -32,7 +34,8 @@ export class ParcelQLColumnBuilder
             for (const builder of this.childBuilders) {
                 const instance = new builder(this.query);
                 // console.log(`${instance.constructor.name} is supported: ${instance.isQuerySchemaSupported()}`);
-                if (instance.isQuerySchemaSupported()) {
+                if (!this.restrictedBuilders.includes(builder.name) &&
+                 instance.isQuerySchemaSupported()) {
                     this.selectedBuilder = instance;
                     return;
                 }
@@ -52,6 +55,10 @@ export class ParcelQLColumnBuilder
             if (!this.baseColumnBuilders.includes(this.selectedBuilder.constructor.name)) {
                 (this.selectedBuilder as BaseColumnBuilder).setParent(this.constructor as any);
             }
-            return this.selectedBuilder?.build(knex);
+            const col =  this.selectedBuilder?.build(knex);
+            if (!this.query.alias) {
+                return col;
+            }
+            return knex.raw(`?? as ??`, [col, this.query.alias]);
         }
     }

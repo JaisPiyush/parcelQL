@@ -1,3 +1,4 @@
+import { ParcelQLColumnExpression } from '.';
 import {
     parcelQLSupportedTypeCast,
     parcelQLArithmeticOperators,
@@ -29,13 +30,11 @@ export type ParcelQLOperators =
     | ParcelQLComparisonOperators
     | (typeof parcelQLSubqueryExpressionOperator)[number];
 
-//TODO: Add triviality to support either rightExpr or value
 export interface ParcelQLOperatorExpression<O, L = any, R = any >
     extends ParcelQLExpression {
     leftExpr: L | ParcelQLOperatorExpression<L | any, O> | unknown;
     operator: O;
     rightExpr: R | ParcelQLOperatorExpression<R | any, O> | unknown;
-    // value?: unknown;
 }
 
 export type ParcelQLComparisonOperators =
@@ -63,10 +62,7 @@ export interface ParcelQLCaseWhenExpression extends ParcelQLExpression {
 }
 
 export interface ParcelQLDistinctExpression extends ParcelQLExpression {
-    columns: (
-        | ParcelQLSimpleColumnExpressionWithType
-        | ParcelQLSimpleColumnExpression
-    )[];
+    distinct: ParcelQLColumnExpression[];
 }
 
 export interface ParcelQLFunctionExpression<N, E = ParcelQLExpression>

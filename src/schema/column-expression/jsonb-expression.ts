@@ -6,7 +6,7 @@ import {
 
 export type ParcelQLJSONBFunctions = (typeof parcelQLJSONBFunctions)[number];
 
-export type ParcelQLJSONBExpression = ParcelQLFunctionExpression<
+export type ParcelQLJSONBFunctionExpression = ParcelQLFunctionExpression<
     ParcelQLJSONBFunctions,
     ParcelQLExpression
 >;
